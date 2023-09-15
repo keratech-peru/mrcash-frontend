@@ -17,7 +17,13 @@ const Login = () => {
           <p className="description">Bienvenido a Mr. Cash</p>
           <Input placeholder={"Ingrese su número de DNI"} />
           <Button text={"Ingresar"} />
-          <Link to="register">Quiero registrarme</Link>
+          <div className="login__link">
+            <Link
+              to="register"
+            >
+              Quiero registrarme
+            </Link>
+          </div>
         </div>
       </main>
     </>

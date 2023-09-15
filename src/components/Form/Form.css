@@ -1,0 +1,18 @@
+.form {
+  outline: 1px solid green;
+  width: 100%;
+}
+
+.container_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.double_input {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

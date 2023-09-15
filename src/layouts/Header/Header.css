@@ -11,3 +11,17 @@
   justify-content: space-between;
   margin: 0 auto;
 }
+
+.header__link {
+  display: grid;
+  place-items: center;
+}
+
+.header__link a {
+  color: var(--black);
+  font: var(--button-font);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

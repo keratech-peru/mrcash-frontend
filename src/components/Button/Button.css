@@ -8,5 +8,5 @@
   border: 1px solid var(--gray1);
   border-radius: 18px;
   box-shadow: none;
-  cursor: pointer;
+  pointer-events: none;
 }

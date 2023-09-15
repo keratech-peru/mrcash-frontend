@@ -4,3 +4,8 @@
   border: 1px solid var(--gray2);
   border-radius: 18px;
 }
+
+.input:focus, .input:focus-visible {
+  outline: none;
+  border-color: var(--principal-color);
+}
