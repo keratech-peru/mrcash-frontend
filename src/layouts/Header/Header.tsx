@@ -1,14 +1,21 @@
+import { Link } from "react-router-dom";
+
 import "./Header.css";
 
 import Logo from "../../assets/icons/Logo";
 
-const Header = () => {
+interface HeaderProps {
+  canReturn?: boolean;
+};
+
+const Header = ({ canReturn = false }: HeaderProps) => {
   return (
     <header className="header">
       <div className="header_container">
-        <a className="header__logo" href="/">
-          <Logo />
-        </a>
+        <div>
+          { canReturn && <Link to="/">Regresar</Link> }
+        </div>
+        <Logo />
       </div>
     </header>
   );

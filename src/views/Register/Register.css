@@ -1,0 +1,14 @@
+.register {
+  outline: 1px solid blue;
+  padding: 60px 0;
+}
+
+.container_register {
+  outline: 1px solid green;
+  width: 60%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}

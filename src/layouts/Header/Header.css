@@ -8,11 +8,6 @@
   width: 90%;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   margin: 0 auto;
-}
-
-.header__logo {
-  display: grid;
-  place-items: center;
 }
