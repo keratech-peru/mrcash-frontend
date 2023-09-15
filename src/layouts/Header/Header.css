@@ -1,0 +1,18 @@
+.header {
+  height: 100px;
+  display: grid;
+  place-items: center;
+}
+
+.header_container {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 0 auto;
+}
+
+.header__logo {
+  display: grid;
+  place-items: center;
+}

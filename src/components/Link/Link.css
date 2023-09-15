@@ -1,0 +1,7 @@
+.link {
+  color: var(--black);
+  font: var(--link-font);
+  text-decoration-line: underline;
+  margin: 24px 0 0 0;
+  cursor: pointer;
+}
