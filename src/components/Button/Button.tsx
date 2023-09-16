@@ -4,11 +4,20 @@ import "./Button.css";
 
 interface ButtonProps {
   text: string;
+  isActive: boolean;
+  onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
 };
 
-const Button = ({ text }: ButtonProps) => {
+const Button = ({ text, isActive, onClick }: ButtonProps) => {
+  const buttonClassName = `button ${isActive ? "button--active": ""}`;
+
   return (
-    <button className="button">{text}</button>
+    <button
+      className={buttonClassName}
+      onClick={onClick}
+    >
+      {text}
+    </button>
   );
 };
 

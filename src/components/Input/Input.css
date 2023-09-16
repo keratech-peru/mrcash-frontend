@@ -1,11 +1,35 @@
 .input {
+  outline: 1px solid black;
+  width: 100%;
+  position: relative;
+}
+
+.input__field {
   width: 100%;
   padding: 16px 12px;
   border: 1px solid var(--gray2);
   border-radius: 18px;
 }
 
-.input:focus, .input:focus-visible {
+.input__field:focus,
+.input__field:focus-visible {
   outline: none;
   border-color: var(--principal-color);
+}
+
+.input__field:focus ~ .input__error {
+  display: none;
+}
+
+.input__error {
+  display: none;
+  position: absolute;
+  color: var(--red);
+  font: var(--error-font);
+  bottom: -20px;
+  left: 0;
+}
+
+.input--error .input__error {
+  display: block;
 }

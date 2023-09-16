@@ -10,3 +10,10 @@
   box-shadow: none;
   pointer-events: none;
 }
+
+.button--active {
+  background-color: var(--principal-color);
+  border-color: var(--principal-color);
+  pointer-events: all;
+  cursor: pointer;
+}

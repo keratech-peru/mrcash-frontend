@@ -15,6 +15,7 @@
   --button-font: normal 700 16px/normal "Archivo", sans-serif;
   --link-font: normal 400 16px/160% "Archivo", sans-serif;
   --body-font: normal 400 14px/18px "Archivo", sans-serif;
+  --error-font: normal 400 12px/160% "Archivo", sans-serif;
 }
 
 *, body {
