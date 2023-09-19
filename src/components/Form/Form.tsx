@@ -1,52 +1,89 @@
+import { useState } from "react";
+
 import "./Form.css";
 
 import Input from "../Input/Input";
 import Button from "../Button/Button";
 
+import { InitialFormFields, InitialFormFieldsValidations } from "../../utils/initials";
+import { placeholders } from "../../utils/texts";
+import { FormFieldsInterface, FormFieldsValidationsInterface } from "../../utils/types";
+import isValid from "../../utils/validations";
+
 const Form = () => {
-  const handleFormInput = () => {
-    console.log("handleFormInput!");
+  const [data, setData] = useState<FormFieldsInterface>(InitialFormFields);
+  const [validations, setValidations] = useState<FormFieldsValidationsInterface>(InitialFormFieldsValidations);
+  const [isFormValid, setIsFormValid] = useState<boolean>(false);
+
+  const handleFormInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+
+    const currentValidations = {...validations, [name]: isValid(name, value)};
+    const isFormValid = Object.values(currentValidations).every(value => value === true);
+
+    setData({...data, [name]: value});
+    setValidations(currentValidations);
+    setIsFormValid(isFormValid);
   };
 
   const handleSubmitForm = () => {
-    console.log("handleSubmitForm!");
+    console.log("handleSubmitForm!:", isFormValid);
   };
 
   return (
     <form className="form">
       <div className="container_form">
         <Input
-          placeholder="Ingresa tus nombres"
+          name="name"
+          placeholder={placeholders["name"]}
+          value={data["name"]}
+          isValid={validations["name"]}
           onChange={handleFormInput}
         />
         <Input
-          placeholder="Ingresa tus apellidos"
+          name="lastName"
+          placeholder={placeholders["lastName"]}
+          value={data["lastName"]}
+          isValid={validations["lastName"]}
           onChange={handleFormInput}
         />
         <div className="double_input">
           <Input
-            placeholder="Ingresa tu DNI"
+            name="dni"
+            placeholder={placeholders["dni"]}
+            maxLength={8}
+            value={data["dni"]}
+            isValid={validations["dni"]}
             onChange={handleFormInput}
           />
           <Input
-            placeholder="Ingresa fecha de nacimiento"
+            name="birthday"
+            placeholder={placeholders["birthday"]}
+            value={data["birthday"]}
+            isValid={validations["birthday"]}
             onChange={handleFormInput}
           />
         </div>
         <div className="double_input">
           <Input
-            placeholder="Ingresa tu correo"
+            name="email"
+            placeholder={placeholders["email"]}
+            value={data["email"]}
+            isValid={validations["email"]}
             onChange={handleFormInput}
           />
           <Input
-            placeholder="Ingresa tu número de celular"
+            name="phone"
+            placeholder={placeholders["phone"]}
+            value={data["phone"]}
+            isValid={validations["phone"]}
             onChange={handleFormInput}
           />
         </div>
       </div>
       <Button
         text="Siguiente"
-        isActive={false}
+        isActive={isFormValid}
         onClick={handleSubmitForm}
       />
     </form>

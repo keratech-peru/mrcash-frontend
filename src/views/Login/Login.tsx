@@ -8,18 +8,19 @@ import Button from "../../components/Button/Button";
 
 import Header from "../../layouts/Header/Header";
 
-import { isDniValid } from "../../utils/validations";
+import isValid from "../../utils/validations";
 
 const Login = () => {
   const [loginValue, setLoginValue] = useState<string>("");
-  const [isSubmitLoginActive, setIsSubmitLoginActive] = useState<boolean>(false);
+  const [isLoginValid, setIsLoginValid] = useState<boolean>(false);
 
   const handleLoginInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target;
-    const dniValidation = isDniValid(value);
+    const { name, value } = event.target;
+    
+    const dniValidation = isValid(name, value);
 
     setLoginValue(value);
-    setIsSubmitLoginActive(dniValidation);
+    setIsLoginValid(dniValidation);
   };
 
   const handleSubmitLogin = () => {
@@ -34,14 +35,16 @@ const Login = () => {
           <h1 className="title">¡Hola!</h1>
           <p className="description">Bienvenido a Mr. Cash</p>
           <Input
+            name="dni"
             placeholder={"Ingrese su número de DNI"}
             maxLength={8}
             value={loginValue}
+            isValid={isLoginValid}
             onChange={handleLoginInput}
           />
           <Button
             text={"Ingresar"}
-            isActive={isSubmitLoginActive}
+            isActive={isLoginValid}
             onClick={handleSubmitLogin}
           />
           <div className="login__link">

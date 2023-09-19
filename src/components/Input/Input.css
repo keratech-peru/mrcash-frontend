@@ -11,16 +11,6 @@
   border-radius: 18px;
 }
 
-.input__field:focus,
-.input__field:focus-visible {
-  outline: none;
-  border-color: var(--principal-color);
-}
-
-.input__field:focus ~ .input__error {
-  display: none;
-}
-
 .input__error {
   display: none;
   position: absolute;
@@ -30,6 +20,20 @@
   left: 0;
 }
 
+.input--error .input__field {
+  border-color: var(--red);
+}
+
 .input--error .input__error {
   display: block;
+}
+
+.input__field:focus,
+.input__field:focus-visible {
+  outline: none;
+  border-color: var(--principal-color);
+}
+
+.input__field:focus ~ .input__error {
+  display: none;
 }
