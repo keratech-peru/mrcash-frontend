@@ -7,6 +7,7 @@ import { FormFieldsInterface } from "../../utils/types";
 
 interface InputProps {
   name: string;
+  type?: string;
   placeholder: string;
   maxLength?: number;
   value?: string;
@@ -17,6 +18,7 @@ interface InputProps {
 const Input = (
   {
     name,
+    type = "text",
     placeholder,
     maxLength = 100,
     value = "",
@@ -41,6 +43,7 @@ const Input = (
       <div className={inputClassName}>
         <input
           className="input__field"
+          type={type}
           name={name}
           placeholder={placeholder}
           maxLength={maxLength}

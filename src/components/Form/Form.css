@@ -12,7 +12,7 @@
 
 .double_input {
   width: 100%;
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 8px;
 }

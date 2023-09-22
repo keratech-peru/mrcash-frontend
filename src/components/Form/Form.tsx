@@ -58,6 +58,7 @@ const Form = () => {
           />
           <Input
             name="birthday"
+            type="date"
             placeholder={placeholders["birthday"]}
             value={data["birthday"]}
             isValid={validations["birthday"]}
