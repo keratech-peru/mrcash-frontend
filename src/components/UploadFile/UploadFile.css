@@ -1,0 +1,50 @@
+.uploadfile {
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid var(--yellow);
+  border-radius: 10px;
+}
+
+.uploadfile--error {
+  border: 1px solid var(--red);
+}
+
+.uploadfile--success {
+  border: 1px solid var(--principal-color);
+}
+
+.uploadfile__title {
+  font: var(--subsection-font);
+}
+
+.uploadfile__input {
+  position: relative;
+}
+
+.uploadfile__input input {
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.uploadfile__description {
+  color: var(--yellow);
+}
+
+.uploadfile--error .uploadfile__description {
+  color: var(--red);
+}
+
+.uploadfile--success .uploadfile__description {
+  color: var(--principal-color);
+}

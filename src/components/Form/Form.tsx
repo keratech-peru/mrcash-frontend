@@ -10,7 +10,11 @@ import { placeholders } from "../../utils/texts";
 import { FormFieldsInterface, FormFieldsValidationsInterface } from "../../utils/types";
 import isValid from "../../utils/validations";
 
-const Form = () => {
+interface FormProps {
+  onSubmitForm: any;
+};
+
+const Form = ({ onSubmitForm }: FormProps) => {
   const [data, setData] = useState<FormFieldsInterface>(InitialFormFields);
   const [validations, setValidations] = useState<FormFieldsValidationsInterface>(InitialFormFieldsValidations);
   const [isFormValid, setIsFormValid] = useState<boolean>(false);
@@ -26,8 +30,10 @@ const Form = () => {
     setIsFormValid(isFormValid);
   };
 
-  const handleSubmitForm = () => {
-    console.log("handleSubmitForm!:", isFormValid);
+  const handleSubmitForm = (event: any) => {
+    event.preventDefault();
+
+    onSubmitForm(data);
   };
 
   return (
@@ -84,8 +90,9 @@ const Form = () => {
       </div>
       <Button
         text="Siguiente"
+        type="submit"
         isActive={isFormValid}
-        onClick={handleSubmitForm}
+        onClick={(event) => handleSubmitForm(event)}
       />
     </form>
   );

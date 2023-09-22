@@ -11,6 +11,7 @@
 
   /* Custom Fonts */
   --title-font: normal 700 64px/100% "Archivo", sans-serif;
+  --subsection-font: normal 700 20px/normal "Archivo", sans-serif;
   --description-font: normal 400 24px/160% "Archivo", sans-serif;
   --button-font: normal 700 16px/normal "Archivo", sans-serif;
   --link-font: normal 400 16px/160% "Archivo", sans-serif;

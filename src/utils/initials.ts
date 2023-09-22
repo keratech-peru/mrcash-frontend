@@ -1,4 +1,4 @@
-import { FormFieldsInterface, FormFieldsValidationsInterface } from "./types";
+import { FormFieldsInterface, FormFieldsValidationsInterface, UploadFileType, DniFilesType } from "./types";
 
 export const InitialFormFields: FormFieldsInterface = {
   name: "",
@@ -16,4 +16,17 @@ export const InitialFormFieldsValidations: FormFieldsValidationsInterface = {
   birthday: false,
   email: false,
   phone: false,
+};
+
+export const InitialUploadFile: UploadFileType = {
+  name: "",
+  lastModified: 0,
+  webkitRelativePath: "",
+  size: 0,
+  type: ""
+};
+
+export const InitialDniFiles: DniFilesType = {
+  front: InitialUploadFile,
+  back: InitialUploadFile
 };
