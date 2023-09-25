@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 
-import "./Input.css";
+import "./InputField.css";
 
 import { errors } from "../../utils/texts";
 import { FormFieldsInterface } from "../../utils/types";
 
-interface InputProps {
+interface InputFieldProps {
   name: string;
   type?: string;
   placeholder: string;
@@ -15,7 +15,7 @@ interface InputProps {
   onChange: React.ChangeEventHandler<HTMLInputElement> | undefined;
 };
 
-const Input = (
+const InputField = (
   {
     name,
     type = "text",
@@ -24,10 +24,10 @@ const Input = (
     value = "",
     isValid,
     onChange
-  }: InputProps) => {
+  }: InputFieldProps) => {
     const [hasError, setHasError] = useState<boolean>(false);
 
-    const inputClassName = `input ${hasError ? "input--error" : ""}`;
+    const inputFieldClassName = `inputfield ${hasError ? "inputfield--error" : ""}`;
     const errorMessage = errors[name as keyof FormFieldsInterface];
 
     useEffect(() => {
@@ -40,9 +40,9 @@ const Input = (
     }, []);
 
     return (
-      <div className={inputClassName}>
+      <div className={inputFieldClassName}>
         <input
-          className="input__field"
+          className="inputfield__input"
           type={type}
           name={name}
           placeholder={placeholder}
@@ -50,9 +50,9 @@ const Input = (
           value={value}
           onChange={onChange}
         />
-        <span className="input__error">{errorMessage}</span>
+        <span className="inputfield__error">{errorMessage}</span>
       </div>
     );
 };
 
-export default Input;
+export default InputField;

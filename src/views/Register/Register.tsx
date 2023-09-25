@@ -2,25 +2,31 @@ import { useEffect, useState } from "react";
 
 import "./Register.css";
 
+import InputField from "../../components/InputField/InputField";
 import Form from "../../components/Form/Form";
 import UploadFile from "../../components/UploadFile/UploadFile";
 import Button from "../../components/Button/Button";
+import Dropdrown from "../../components/Dropdown/Dropdown";
 
 import Header from "../../layouts/Header/Header";
 
-import { DniFilesType, UploadFileType } from "../../utils/types";
+import { RegisterStepsType, DniFilesType, UploadFileType } from "../../utils/types";
 import { InitialDniFiles } from "../../utils/initials";
+import { banks } from "../../utils/constants";
 
 const Register = () => {
-  const [step, setStep] = useState<any>("account");
+  const [step, setStep] = useState<RegisterStepsType>("account");
   const [dniFiles, setDniFiles] = useState<DniFilesType>(InitialDniFiles);
   const [hasDniFiles, setHasDniFiles] = useState<boolean>(false);
+  const [bankName, setBankName] = useState<string>("");
 
+  // Funciones del primer paso de Registro
   const handleSubmitForm = (data: any) => {
     console.log("handleSubmitForm!", data);
     setStep("upload");
   };
 
+  // Funciones del segundo paso de Registro
   const handleFrontDniFile = (file: UploadFileType) => {
     console.log("handleFrontDniFile!", file);
     setDniFiles({...dniFiles, front: file});
@@ -33,6 +39,15 @@ const Register = () => {
 
   const handleSubmitUploadFiles = () => {
     setStep("account");
+  };
+
+  // Funciones del tercer paso de Registro
+  const handleBankName = (name: string) => {
+    setBankName(banksname);
+  };
+
+  const handleBankAccount = (event: any) => {
+    console.log("handleBankAccount:", event);
   };
 
   useEffect(() => {
@@ -88,10 +103,18 @@ const Register = () => {
                 >
                   Para finalizar con el registro, brindanos tu número de cuenta
                 </p>
-                {/* <div className="register__account">
-                  <Input />
-                  <Input /
-                </div> */}
+                <div className="register__account">
+                  <Dropdrown
+                    value={bankName}
+                    options={banks}
+                    onChange={handleBankName}
+                  />
+                  <InputField
+                    name="bankAccount"
+                    placeholder="Ej: 19139712973012"
+                    onChange={handleBankAccount}
+                  />
+                </div>
               </>
             ) : <></>
           }

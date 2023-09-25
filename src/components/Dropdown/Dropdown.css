@@ -1,0 +1,14 @@
+.dropdown {
+  outline: 1px solid red;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown__input {
+  width: 100%;
+  background-color: var(--white);
+  padding: 16px 12px;
+  border: 1px solid var(--gray2);
+  border-radius: 18px;
+  cursor: pointer;
+}

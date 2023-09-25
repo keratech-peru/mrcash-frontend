@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import "./Login.css";
 
-import Input from "../../components/Input/Input";
+import Input from "../../components/InputField/InputField";
 import Button from "../../components/Button/Button";
 
 import Header from "../../layouts/Header/Header";

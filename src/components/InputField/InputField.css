@@ -1,17 +1,17 @@
-.input {
+.inputfield {
   outline: 1px solid black;
   width: 100%;
   position: relative;
 }
 
-.input__field {
+.inputfield__input {
   width: 100%;
   padding: 16px 12px;
   border: 1px solid var(--gray2);
   border-radius: 18px;
 }
 
-.input__error {
+.inputfield__error {
   display: none;
   position: absolute;
   color: var(--red);
@@ -20,20 +20,20 @@
   left: 0;
 }
 
-.input--error .input__field {
+.inputfield--error .inputfield__input {
   border-color: var(--red);
 }
 
-.input--error .input__error {
+.inputfield--error .inputfield__error {
   display: block;
 }
 
-.input__field:focus,
-.input__field:focus-visible {
+.inputfield__input:focus,
+.inputfield__input:focus-visible {
   outline: none;
   border-color: var(--principal-color);
 }
 
-.input__field:focus ~ .input__error {
+.inputfield__input:focus ~ .inputfield__error {
   display: none;
 }

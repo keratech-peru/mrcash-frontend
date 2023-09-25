@@ -1,5 +1,7 @@
 export type ButtonType = "button" | "reset" | "submit" | undefined;
 
+export type RegisterStepsType = "register" | "upload" | "account" | undefined;
+
 export type DniFilesType = {
   front: UploadFileType;
   back: UploadFileType;

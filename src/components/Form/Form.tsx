@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import "./Form.css";
 
-import Input from "../Input/Input";
+import InputField from "../InputField/InputField";
 import Button from "../Button/Button";
 
 import { InitialFormFields, InitialFormFieldsValidations } from "../../utils/initials";
@@ -19,7 +19,7 @@ const Form = ({ onSubmitForm }: FormProps) => {
   const [validations, setValidations] = useState<FormFieldsValidationsInterface>(InitialFormFieldsValidations);
   const [isFormValid, setIsFormValid] = useState<boolean>(false);
 
-  const handleFormInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFormInputField = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
 
     const currentValidations = {...validations, [name]: isValid(name, value)};
@@ -39,52 +39,52 @@ const Form = ({ onSubmitForm }: FormProps) => {
   return (
     <form className="form">
       <div className="container_form">
-        <Input
+        <InputField
           name="name"
           placeholder={placeholders["name"]}
           value={data["name"]}
           isValid={validations["name"]}
-          onChange={handleFormInput}
+          onChange={handleFormInputField}
         />
-        <Input
+        <InputField
           name="lastName"
           placeholder={placeholders["lastName"]}
           value={data["lastName"]}
           isValid={validations["lastName"]}
-          onChange={handleFormInput}
+          onChange={handleFormInputField}
         />
         <div className="double_input">
-          <Input
+          <InputField
             name="dni"
             placeholder={placeholders["dni"]}
             maxLength={8}
             value={data["dni"]}
             isValid={validations["dni"]}
-            onChange={handleFormInput}
+            onChange={handleFormInputField}
           />
-          <Input
+          <InputField
             name="birthday"
             type="date"
             placeholder={placeholders["birthday"]}
             value={data["birthday"]}
             isValid={validations["birthday"]}
-            onChange={handleFormInput}
+            onChange={handleFormInputField}
           />
         </div>
         <div className="double_input">
-          <Input
+          <InputField
             name="email"
             placeholder={placeholders["email"]}
             value={data["email"]}
             isValid={validations["email"]}
-            onChange={handleFormInput}
+            onChange={handleFormInputField}
           />
-          <Input
+          <InputField
             name="phone"
             placeholder={placeholders["phone"]}
             value={data["phone"]}
             isValid={validations["phone"]}
-            onChange={handleFormInput}
+            onChange={handleFormInputField}
           />
         </div>
       </div>
