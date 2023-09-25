@@ -33,7 +33,7 @@ const UploadFile = ({ title, handleFile }: UploadFileProps) => {
       handleFile(selectedFile);
     } else {
       setStatus("error");
-    }
+    };
   }, [selectedFile, handleFile]);
 
   useEffect(() => {

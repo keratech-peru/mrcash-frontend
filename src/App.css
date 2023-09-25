@@ -2,9 +2,7 @@
   text-align: center;
 }
 
-.wrapper {
-  outline: 1px solid red;
-}
+.wrapper {}
 
 .title {
   font: var(--title-font);

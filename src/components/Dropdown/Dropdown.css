@@ -1,7 +1,12 @@
 .dropdown {
-  outline: 1px solid red;
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+
+.dropdown--open .dropdown__input {
+  border-radius: 18px 18px 0 0;
+  border-bottom: 0;
 }
 
 .dropdown__input {
@@ -11,4 +16,34 @@
   border: 1px solid var(--gray2);
   border-radius: 18px;
   cursor: pointer;
+}
+
+.dropdown__input:focus,
+.dropdown__input:focus-visible {
+  outline: none;
+}
+
+.dropdown__options {
+  width: 100%;
+  position: absolute;
+  top: 50px;
+  z-index: 1;
+  list-style: none;
+  border: 1px solid var(--gray2);
+}
+
+.dropdown__option {
+  background-color: var(--white);
+  text-align: left;
+  padding: 16px;
+  border-bottom: 1px solid var(--gray2);
+  cursor: pointer;
+}
+
+.dropdown__option:hover {
+  background-color: var(--hover-color);
+}
+
+.dropdown__option:last-child {
+  border: 0;
 }

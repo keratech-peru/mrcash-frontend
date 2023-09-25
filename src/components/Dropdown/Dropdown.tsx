@@ -17,18 +17,20 @@ const Dropdrown = ({ value, options, onChange }: DropdownProps) => {
 
   const handleChangeBank = (event: any) => {
     event.preventDefault();
-    console.log(event.target);
+
     const { id } = event?.target;
 
+    setShowOptions(false);
     onChange(id);
   };
-
+  console.log(value, typeof value)
   return (
-    <div className="dropdown">
+    <div className={`dropdown ${showOptions ? "dropdown--open" : ""} `}>
       <input
         className="dropdown__input"
         type="text"
-        value={value}
+        value={value === "" ? "¿A qué banco pertenece tu cuenta?" : value}
+        readOnly
         onClick={handleShowOptions}
       />
       {

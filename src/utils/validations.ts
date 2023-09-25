@@ -28,6 +28,15 @@ const isPhoneValid = (phone: string) => {
   return isNum && hasCorrectSize;
 };
 
+const isBankAccountValid = (account: string) => {
+  if (!account) return false;
+
+  const isNum = /^\d+$/.test(account);
+  const hasCorrectSize = account?.length === 14;
+
+  return isNum && hasCorrectSize;
+};
+
 const isValid = (name: string, value: string) => {
   if (name === "name") {
     return isNotEmpty(value);
@@ -51,6 +60,10 @@ const isValid = (name: string, value: string) => {
 
   if (name === "phone") {
     return isPhoneValid(value);
+  };
+
+  if (name === "bankAccount") {
+    return isBankAccountValid(value);
   };
 
   return false;

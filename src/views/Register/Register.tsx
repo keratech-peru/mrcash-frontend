@@ -13,12 +13,15 @@ import Header from "../../layouts/Header/Header";
 import { RegisterStepsType, DniFilesType, UploadFileType } from "../../utils/types";
 import { InitialDniFiles } from "../../utils/initials";
 import { banks } from "../../utils/constants";
+import isValid from "../../utils/validations";
 
 const Register = () => {
-  const [step, setStep] = useState<RegisterStepsType>("account");
+  const [step, setStep] = useState<RegisterStepsType>("register");
   const [dniFiles, setDniFiles] = useState<DniFilesType>(InitialDniFiles);
   const [hasDniFiles, setHasDniFiles] = useState<boolean>(false);
   const [bankName, setBankName] = useState<string>("");
+  const [bankAccount, setBankAccount] = useState<string>("");
+  const [hasBankAccount, setHasBankAccount] = useState<boolean>(false);
 
   // Funciones del primer paso de Registro
   const handleSubmitForm = (data: any) => {
@@ -43,18 +46,28 @@ const Register = () => {
 
   // Funciones del tercer paso de Registro
   const handleBankName = (name: string) => {
-    setBankName(banksname);
+    if (!name) return;
+    
+    const bankName = banks?.find((bank: any) => bank?.value === name)?.label;
+    
+    setBankName(bankName ?? "");
   };
 
   const handleBankAccount = (event: any) => {
-    console.log("handleBankAccount:", event);
+    console.log("handleBankAccount:", event?.target?.value);
+    const { value } = event?.target;
+    
+    const hasBankAccount = isValid("bankAccount", value);
+
+    setBankAccount(value);
+    setHasBankAccount(hasBankAccount);
   };
 
   useEffect(() => {
     if (!dniFiles) return;
-
-    const hasDniFiles = Object.values(dniFiles).every(value => value !== null && value !== undefined);
-
+    console.log("dniFiles:", dniFiles);
+    const hasDniFiles = Object.values(dniFiles).every((value: any) => value !== null && value !== undefined && value !== "" && value !== 0);
+    console.log("hasDniFiles:", hasDniFiles);
     setHasDniFiles(hasDniFiles);
   }, [dniFiles]);
 
@@ -112,9 +125,15 @@ const Register = () => {
                   <InputField
                     name="bankAccount"
                     placeholder="Ej: 19139712973012"
+                    value={bankAccount}
                     onChange={handleBankAccount}
                   />
                 </div>
+                <Button
+                  text={"Listo"}
+                  isActive={hasDniFiles}
+                  onClick={handleSubmitUploadFiles}
+                />
               </>
             ) : <></>
           }
