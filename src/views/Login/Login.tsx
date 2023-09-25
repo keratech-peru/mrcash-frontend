@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 import "./Login.css";
 
@@ -13,6 +14,7 @@ import isValid from "../../utils/validations";
 const Login = () => {
   const [loginValue, setLoginValue] = useState<string>("");
   const [isLoginValid, setIsLoginValid] = useState<boolean>(false);
+  const [data, setData] = useState<any>(null);
 
   const handleLoginInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -27,6 +29,31 @@ const Login = () => {
     console.log("handleSubmitLogin!");
   };
 
+  useEffect(() => {
+    const apiKey = "keyprueba_portal";
+    const apiUrl = "https://5e65-38-25-30-150.ngrok-free.app/epe-programa/acerca-de";
+
+    const requestOptions = {
+      headers: {
+        "Api-Lambda-Key": apiKey
+      }
+    };
+
+    // Función para realizar la solicitud API
+    const fetchData = async () => {
+      try {
+        const response = await axios.get<any>(apiUrl, requestOptions);
+
+        setData(response.data);
+      } catch (error) {
+        console.error("Error al obtener datos de la API:", error);
+      }
+    };
+
+    // Llama a la función para realizar la solicitud API cuando el componente se monta
+    fetchData();
+  }, []);
+  console.log("data:", data);
   return (
     <>
       <Header />
