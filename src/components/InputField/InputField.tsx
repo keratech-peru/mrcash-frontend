@@ -12,6 +12,7 @@ interface InputFieldProps {
   maxLength?: number;
   value?: string;
   isValid?: boolean;
+  errMess?: string;
   onChange: React.ChangeEventHandler<HTMLInputElement> | undefined;
 };
 
@@ -23,6 +24,7 @@ const InputField = (
     maxLength = 100,
     value = "",
     isValid,
+    errMess = "",
     onChange
   }: InputFieldProps) => {
     const [hasError, setHasError] = useState<boolean>(false);

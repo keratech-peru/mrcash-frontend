@@ -16,7 +16,7 @@ import { banks } from "../../utils/constants";
 import isValid from "../../utils/validations";
 
 const Register = () => {
-  const [step, setStep] = useState<RegisterStepsType>("register");
+  const [step, setStep] = useState<RegisterStepsType>("upload");
   const [dniFiles, setDniFiles] = useState<DniFilesType>(InitialDniFiles);
   const [hasDniFiles, setHasDniFiles] = useState<boolean>(false);
   const [bankName, setBankName] = useState<string>("");
@@ -54,7 +54,8 @@ const Register = () => {
   };
 
   const handleBankAccount = (event: any) => {
-    console.log("handleBankAccount:", event?.target?.value);
+    event.preventDefault();
+
     const { value } = event?.target;
     
     const hasBankAccount = isValid("bankAccount", value);
@@ -66,9 +67,9 @@ const Register = () => {
   useEffect(() => {
     if (!dniFiles) return;
     console.log("dniFiles:", dniFiles);
-    const hasDniFiles = Object.values(dniFiles).every((value: any) => value !== null && value !== undefined && value !== "" && value !== 0);
-    console.log("hasDniFiles:", hasDniFiles);
-    setHasDniFiles(hasDniFiles);
+    // const hasDniFiles = Object.values(dniFiles).every((file: any) => Object.values(file).every((value: any) => value !== null && value !== undefined && value !== "" && value !== 0));
+    // console.log("hasDniFiles:", hasDniFiles);
+    // setHasDniFiles(hasDniFiles);
   }, [dniFiles]);
 
   return (
@@ -131,8 +132,8 @@ const Register = () => {
                 </div>
                 <Button
                   text={"Listo"}
-                  isActive={hasDniFiles}
-                  onClick={handleSubmitUploadFiles}
+                  isActive={true}
+                  onClick={() => {}}
                 />
               </>
             ) : <></>
