@@ -14,6 +14,7 @@ import { RegisterStepsType, DniFilesType, UploadFileType } from "../../utils/typ
 import { InitialDniFiles } from "../../utils/initials";
 import { banks } from "../../utils/constants";
 import isValid from "../../utils/validations";
+import Person from "../../assets/icons/Person";
 
 const Register = () => {
   const [step, setStep] = useState<RegisterStepsType>("upload");
@@ -77,6 +78,9 @@ const Register = () => {
       <Header canReturn />
       <main className="register">
         <div className="container_register">
+          <div className="register__logoPerson">
+           <Person />
+          </div>
           {
             step === "register" ? (
               <>

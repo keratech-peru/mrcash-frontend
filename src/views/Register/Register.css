@@ -25,3 +25,10 @@
   flex-direction: column;
   gap: 24px;
 }
+
+.register__logoPerson{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 24px 0;
+}
