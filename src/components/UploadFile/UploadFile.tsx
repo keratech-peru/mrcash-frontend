@@ -64,6 +64,8 @@ const UploadFile = ({ title, handleFile }: UploadFileProps) => {
           className="uploadfile__input"
           type="file"
           name="my-image"
+          accept="image/*"
+          capture="environment"
           onChange={handleFileChange}
         />
       </div>
