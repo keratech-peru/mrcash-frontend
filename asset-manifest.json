@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/mrcash-frontend/static/css/main.da525c21.css",
-    "main.js": "/mrcash-frontend/static/js/main.7e00f68a.js",
+    "main.css": "/mrcash-frontend/static/css/main.fb2fea62.css",
+    "main.js": "/mrcash-frontend/static/js/main.bcf50866.js",
     "index.html": "/mrcash-frontend/index.html",
-    "main.da525c21.css.map": "/mrcash-frontend/static/css/main.da525c21.css.map",
-    "main.7e00f68a.js.map": "/mrcash-frontend/static/js/main.7e00f68a.js.map"
+    "main.fb2fea62.css.map": "/mrcash-frontend/static/css/main.fb2fea62.css.map",
+    "main.bcf50866.js.map": "/mrcash-frontend/static/js/main.bcf50866.js.map"
   },
   "entrypoints": [
-    "static/css/main.da525c21.css",
-    "static/js/main.7e00f68a.js"
+    "static/css/main.fb2fea62.css",
+    "static/js/main.bcf50866.js"
   ]
 }
