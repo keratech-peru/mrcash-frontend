@@ -1,0 +1,16 @@
+.inputbox {
+  background: var(--white);
+  width: 48px;
+  height: 48px;
+  color: var(--black);
+  text-align: center;
+  font-size: 32px;
+  padding: 12px;
+  border: 1px solid var(--secondary-color);
+  border-radius: 5px;
+}
+
+.inputbox:focus,
+.inputbox:focus-visible {
+  outline: none;
+}

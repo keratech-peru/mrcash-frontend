@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const loginService = (dni: string) => {
+const dniValidationService = (dni: string) => {
   const apiKey = "keyprueba_users";
   const apiUrl = `https://rrwzy5sh22fpv463lkxxrrmkku0orluc.lambda-url.us-east-1.on.aws/users/appuser/${dni}/1`;
 
@@ -29,4 +29,4 @@ const loginService = (dni: string) => {
   return loginResponse;
 };
 
-export default loginService;
+export default dniValidationService;

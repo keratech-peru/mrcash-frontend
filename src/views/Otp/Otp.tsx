@@ -1,6 +1,23 @@
+import "./Otp.css";
+
+import InputBoxes from "../../components/InputBoxes/InputBoxes";
+
+import Header from "../../layouts/Header/Header";
+
 const Otp = () => {
   return (
-    <div>Otp</div>
+    <>
+      <Header />
+      <main className="otp">
+        <div className="container_otp">
+          <h1 className="title">Por favor revisa tu celular</h1>
+          <p className="description">
+            Hemos enviado un código de acceso  que tiene  4 dígitos al número *** *** *66
+          </p>
+          <InputBoxes size={4} />
+        </div>
+      </main>
+    </>
   );
 };
 

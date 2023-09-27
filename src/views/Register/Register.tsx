@@ -66,10 +66,10 @@ const Register = () => {
 
   useEffect(() => {
     if (!dniFiles) return;
-    console.log("dniFiles:", dniFiles);
-    // const hasDniFiles = Object.values(dniFiles).every((file: any) => Object.values(file).every((value: any) => value !== null && value !== undefined && value !== "" && value !== 0));
-    // console.log("hasDniFiles:", hasDniFiles);
-    // setHasDniFiles(hasDniFiles);
+
+    const hasDniFiles = Object.values(dniFiles).every((file: any) => Object.values(file).every((value: any) => value !== null && value !== undefined && value !== "" && value !== 0));
+
+    setHasDniFiles(hasDniFiles);
   }, [dniFiles]);
 
   return (

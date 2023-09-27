@@ -28,13 +28,13 @@ const UploadFile = ({ title, handleFile }: UploadFileProps) => {
 
     const { type } = selectedFile;
 
-    if (type === "image/jpeg") {
+    if (type?.includes("image/")) {
       setStatus("success");
       handleFile(selectedFile);
     } else {
       setStatus("error");
     };
-  }, [selectedFile, handleFile]);
+  }, [selectedFile]);
 
   useEffect(() => {
     if (!status) return;

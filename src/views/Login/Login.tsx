@@ -8,7 +8,7 @@ import Button from "../../components/Button/Button";
 
 import Header from "../../layouts/Header/Header";
 
-import loginService from "../../services/loginService";
+import dniValidationService from "../../services/dniValidationService";
 
 import isValid from "../../utils/validations";
 
@@ -29,7 +29,7 @@ const Login = () => {
   };
 
   const handleSubmitLogin = async () => {
-    const response = await loginService(loginValue);
+    const response = await dniValidationService(loginValue);
 
     const { status, data } = response;
 
