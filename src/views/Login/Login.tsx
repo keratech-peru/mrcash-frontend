@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import "./Login.css";
-
 import InputField from "../../components/InputField/InputField";
 import Button from "../../components/Button/Button";
 import TextLink from "../../components/TextLink/TextLink";
@@ -13,12 +11,15 @@ import dniValidationService from "../../services/dniValidationService";
 
 import isValid from "../../utils/validations";
 
+import "./Login.css";
+
 const Login = () => {
   const navigate = useNavigate();
 
   const [loginValue, setLoginValue] = useState<string>("");
   const [isLoginValid, setIsLoginValid] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const [userData, setUserData] = useState<any>({});
   console.log("errorMessage:", errorMessage);
   const handleLoginInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -35,7 +36,7 @@ const Login = () => {
     const { status, data } = response;
 
     if (status === 200) {
-      navigate("/otp");
+      navigate("/otp", { replace: true, state: data });
     };
 
     if (status === 400) {

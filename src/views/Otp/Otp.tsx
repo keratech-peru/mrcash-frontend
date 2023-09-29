@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import InputBoxes from "../../components/InputBoxes/InputBoxes";
 import Timer from "../../components/Timer/Timer";
 import TextLink from "../../components/TextLink/TextLink";
 
 import Header from "../../layouts/Header/Header";
+
+import otpValidationService from "../../services/otpValidationService";
 
 import "./Otp.css";
 
@@ -14,7 +16,10 @@ const Otp = () => {
 
   const [key, setKey] = useState<number>(0);
   const [timerIsDone, setTimerIsDone] = useState<boolean>(false);
-  
+
+  const { state } = useLocation();
+  const { appuser_id: userId, phone: userPhone } = state;
+
   const handleTimer = (isDone: boolean) => {
     setTimerIsDone(isDone);
   };
@@ -24,9 +29,15 @@ const Otp = () => {
     setTimerIsDone(false);
   };
 
-  const handleFinalCode = (code: string) => {
-    console.log("handleFinalCode!", code);
-    navigate("/dashboard");
+  const handleFinalCode = async (code: string) => {
+    const otpData = {
+      appuser_id: userId,
+      otp: code
+    };
+    console.log("handleFinalCode!", code, otpData);
+    const response = await otpValidationService(otpData);
+    console.log("response:", response);
+    // navigate("/dashboard");
   };
 
   return (
@@ -36,7 +47,7 @@ const Otp = () => {
         <div className="container_otp">
           <h1 className="title">Por favor revisa tu celular</h1>
           <p className="description">
-            Hemos enviado un código de acceso  que tiene  4 dígitos al número *** *** *66
+            Hemos enviado un código de acceso  que tiene  4 dígitos al número {userPhone}
           </p>
           <InputBoxes
             size={4}
