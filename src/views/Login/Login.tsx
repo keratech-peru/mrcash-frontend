@@ -11,6 +11,7 @@ import Header from "../../layouts/Header/Header";
 import dniValidationService from "../../services/dniValidationService";
 
 import isValid from "../../utils/validations";
+import GenericModal from "../../components/GenericModal/GenericModal";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -73,6 +74,7 @@ const Login = () => {
           </div>
         </div>
       </main>
+      <GenericModal />
     </>
   );
 };
