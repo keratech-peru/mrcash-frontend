@@ -19,13 +19,13 @@ import isValid from "../../utils/validations";
 const Register = () => {
   const navigate = useNavigate();
 
-  const [step, setStep] = useState<RegisterStepsType>("upload");
+  const [step, setStep] = useState<RegisterStepsType>("register");
   const [dniFiles, setDniFiles] = useState<DniFilesType>(InitialDniFiles);
   const [hasDniFiles, setHasDniFiles] = useState<boolean>(false);
   const [bankName, setBankName] = useState<string>("");
   const [bankAccount, setBankAccount] = useState<string>("");
   const [hasBankAccount, setHasBankAccount] = useState<boolean>(false);
-
+  console.log("hasBankAccount:", hasBankAccount);
   // Funciones del primer paso de Registro
   const handleSubmitForm = (data: any) => {
     setStep("upload");
@@ -67,7 +67,9 @@ const Register = () => {
   const handleSubmitBankAccount = (event: any) => {
     event.preventDefault();
 
-    navigate("/otp");
+    if (bankAccount === "12345678") {
+      navigate("/otp");
+    };
   };
 
   useEffect(() => {

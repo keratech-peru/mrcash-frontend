@@ -44,7 +44,7 @@ const Timer = ({ time, handleTimer }: TimerProps) => {
       setStatus("inactive");
       handleTimer(true);
     };
-  }, [clock?.time]);
+  }, [clock?.time, handleTimer]);
 
   return (
     <p

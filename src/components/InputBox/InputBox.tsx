@@ -22,7 +22,7 @@ const InputBox = ({ name, isActive = true, onChange }: InputBoxProps) => {
     
     if (isNum) {
       setValue(value);
-      onChange(name);
+      onChange(name, value);
     };
   };
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import "./Login.css";
 
@@ -19,7 +19,7 @@ const Login = () => {
   const [loginValue, setLoginValue] = useState<string>("");
   const [isLoginValid, setIsLoginValid] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
-
+  console.log("errorMessage:", errorMessage);
   const handleLoginInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     

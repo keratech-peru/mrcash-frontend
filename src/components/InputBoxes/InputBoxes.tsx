@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useState, useRef } from "react";
 
 import "./InputBoxes.css";
 
@@ -7,18 +7,25 @@ import InputBox from "../InputBox/InputBox";
 interface InputBoxesProps {
   size: number;
   isActive: boolean;
+  handleCode: any;
 };
 
-const InputBoxes = ({ size = 1, isActive = true }: InputBoxesProps) => {
+const InputBoxes = ({ size = 1, isActive = true, handleCode }: InputBoxesProps) => {
   const inputBoxesRef: any = useRef(null);
 
-  const handleCurrentInputBox = (id: string) => {
+  const [code, setCode] = useState<string>("");
+
+  const handleCurrentInputBox = (id: string, value: string) => {
     const currentId = Number(id?.split("-")[1]);
     const inputBoxes = inputBoxesRef?.current?.childNodes;
     const nextInputBox = inputBoxes[currentId + 1];
+    const currentCode = code + value;
 
     if (currentId < inputBoxes.length - 1) {
+      setCode(code + value);
       nextInputBox.focus();
+    } else {
+      handleCode(currentCode);
     };
   };
 

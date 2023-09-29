@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import InputBoxes from "../../components/InputBoxes/InputBoxes";
 import Timer from "../../components/Timer/Timer";
@@ -9,6 +10,8 @@ import Header from "../../layouts/Header/Header";
 import "./Otp.css";
 
 const Otp = () => {
+  const navigate = useNavigate();
+
   const [key, setKey] = useState<number>(0);
   const [timerIsDone, setTimerIsDone] = useState<boolean>(false);
   
@@ -18,6 +21,12 @@ const Otp = () => {
 
   const handleResendCode = () => {
     setKey((key: number) => key + 1);
+    setTimerIsDone(false);
+  };
+
+  const handleFinalCode = (code: string) => {
+    console.log("handleFinalCode!", code);
+    navigate("/dashboard");
   };
 
   return (
@@ -29,7 +38,11 @@ const Otp = () => {
           <p className="description">
             Hemos enviado un código de acceso  que tiene  4 dígitos al número *** *** *66
           </p>
-          <InputBoxes size={4} isActive={!timerIsDone} />
+          <InputBoxes
+            size={4}
+            isActive={!timerIsDone}
+            handleCode={handleFinalCode}
+          />
           <Timer
             time={10}
             handleTimer={handleTimer}
