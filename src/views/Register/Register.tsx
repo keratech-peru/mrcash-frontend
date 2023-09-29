@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import "./Register.css";
 
@@ -16,6 +17,8 @@ import { banks } from "../../utils/constants";
 import isValid from "../../utils/validations";
 
 const Register = () => {
+  const navigate = useNavigate();
+
   const [step, setStep] = useState<RegisterStepsType>("upload");
   const [dniFiles, setDniFiles] = useState<DniFilesType>(InitialDniFiles);
   const [hasDniFiles, setHasDniFiles] = useState<boolean>(false);
@@ -25,18 +28,15 @@ const Register = () => {
 
   // Funciones del primer paso de Registro
   const handleSubmitForm = (data: any) => {
-    console.log("handleSubmitForm!", data);
     setStep("upload");
   };
 
   // Funciones del segundo paso de Registro
   const handleFrontDniFile = (file: UploadFileType) => {
-    console.log("handleFrontDniFile!", file);
     setDniFiles({...dniFiles, front: file});
   };
 
   const handleBackDniFile = (file: UploadFileType) => {
-    console.log("handleBackDniFile!", file);
     setDniFiles({...dniFiles, back: file});
   };
 
@@ -62,6 +62,12 @@ const Register = () => {
 
     setBankAccount(value);
     setHasBankAccount(hasBankAccount);
+  };
+
+  const handleSubmitBankAccount = (event: any) => {
+    event.preventDefault();
+
+    navigate("/otp");
   };
 
   useEffect(() => {
@@ -133,7 +139,7 @@ const Register = () => {
                 <Button
                   text={"Listo"}
                   isActive={true}
-                  onClick={() => {}}
+                  onClick={handleSubmitBankAccount}
                 />
               </>
             ) : <></>

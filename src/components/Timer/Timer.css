@@ -1,4 +1,11 @@
 .timer {
-  color: var(--principal-color);
   font: var(--link-font);
+}
+
+.timer--active {
+  color: var(--principal-color);
+}
+
+.timer--inactive {
+  color: var(--red);
 }

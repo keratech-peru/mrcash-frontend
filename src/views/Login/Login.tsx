@@ -5,6 +5,7 @@ import "./Login.css";
 
 import InputField from "../../components/InputField/InputField";
 import Button from "../../components/Button/Button";
+import TextLink from "../../components/TextLink/TextLink";
 
 import Header from "../../layouts/Header/Header";
 
@@ -64,13 +65,10 @@ const Login = () => {
             isActive={isLoginValid}
             onClick={handleSubmitLogin}
           />
-          <div className="login__link">
-            <Link
-              to="register"
-            >
-              Quiero registrarme
-            </Link>
-          </div>
+          <TextLink
+            text="Quiero registrarme"
+            url="register"
+          />
         </div>
       </main>
     </>

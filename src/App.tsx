@@ -12,8 +12,8 @@ const App = () => {
       <div className="wrapper">
         <Routes>
           <Route path="/" element={ <Login/> } />
-          <Route path="otp" element={ <Otp/> } />
           <Route path="register" element={ <Register/> } />
+          <Route path="otp" element={ <Otp/> } />
         </Routes>
       </div>
     </div>

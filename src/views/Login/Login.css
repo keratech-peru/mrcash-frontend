@@ -10,14 +10,3 @@
   align-items: center;
   margin: 0 auto;
 }
-
-.login__link {
-  display: grid;
-  place-items: center;
-  margin: 24px 0 0 0;
-}
-
-.login__link a {
-  color: var(--black);
-  font: var(--link-font);
-}

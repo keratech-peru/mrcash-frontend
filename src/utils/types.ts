@@ -34,3 +34,11 @@ export type FormFieldsValidationsInterface = {
   email: boolean;
   phone: boolean;
 };
+
+export type TimerStatusType = "active" | "inactive";
+
+export type TimerClockType = {
+  time: number;
+  seconds: number;
+  minuts: number;
+};

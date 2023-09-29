@@ -4,11 +4,14 @@ import "./InputBox.css";
 
 interface InputBoxProps {
   name: string;
+  isActive?: boolean;
   onChange: any;
 };
 
-const InputBox = ({ name, onChange }: InputBoxProps) => {
+const InputBox = ({ name, isActive = true, onChange }: InputBoxProps) => {
   const [value, setValue] = useState<string>("");
+
+  const className = `inputbox ${isActive ? "": "inputbox--inactive"}`; 
 
   const handleInputBox = (event: any) => {
     event.preventDefault();
@@ -26,7 +29,7 @@ const InputBox = ({ name, onChange }: InputBoxProps) => {
   return (
     <input
       id={name}
-      className="inputbox"
+      className={className}
       type="text"
       name={name}
       maxLength={1}

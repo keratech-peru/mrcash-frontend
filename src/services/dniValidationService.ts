@@ -25,7 +25,7 @@ const dniValidationService = (dni: string) => {
   };
 
   const loginResponse = fetchData();
-  console.log("loginResponse:", loginResponse);
+
   return loginResponse;
 };
 

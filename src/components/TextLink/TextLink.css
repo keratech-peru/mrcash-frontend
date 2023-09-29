@@ -1,0 +1,7 @@
+.textlink {
+    color: var(--black);
+    text-decoration: underline;
+    font: var(--link-font);
+    margin: 24px 0 0 0;
+    cursor: pointer;
+}

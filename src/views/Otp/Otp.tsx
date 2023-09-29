@@ -1,22 +1,43 @@
-import "./Otp.css";
+import { useState } from "react";
 
 import InputBoxes from "../../components/InputBoxes/InputBoxes";
 import Timer from "../../components/Timer/Timer";
+import TextLink from "../../components/TextLink/TextLink";
 
 import Header from "../../layouts/Header/Header";
 
+import "./Otp.css";
+
 const Otp = () => {
+  const [key, setKey] = useState<number>(0);
+  const [timerIsDone, setTimerIsDone] = useState<boolean>(false);
+  
+  const handleTimer = (isDone: boolean) => {
+    setTimerIsDone(isDone);
+  };
+
+  const handleResendCode = () => {
+    setKey((key: number) => key + 1);
+  };
+
   return (
     <>
       <Header />
-      <main className="otp">
+      <main key={key} className="otp">
         <div className="container_otp">
           <h1 className="title">Por favor revisa tu celular</h1>
           <p className="description">
             Hemos enviado un código de acceso  que tiene  4 dígitos al número *** *** *66
           </p>
-          <InputBoxes size={4}/>
-          <Timer time={30}/>
+          <InputBoxes size={4} isActive={!timerIsDone} />
+          <Timer
+            time={10}
+            handleTimer={handleTimer}
+          />
+          <TextLink
+            text="Volver a enviar el código"
+            onclick={handleResendCode}
+          />
         </div>
       </main>
     </>

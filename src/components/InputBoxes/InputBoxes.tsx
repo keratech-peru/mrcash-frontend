@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useRef } from "react";
 
 import "./InputBoxes.css";
 
@@ -6,9 +6,10 @@ import InputBox from "../InputBox/InputBox";
 
 interface InputBoxesProps {
   size: number;
+  isActive: boolean;
 };
 
-const InputBoxes = ({ size = 1 }: InputBoxesProps) => {
+const InputBoxes = ({ size = 1, isActive = true }: InputBoxesProps) => {
   const inputBoxesRef: any = useRef(null);
 
   const handleCurrentInputBox = (id: string) => {
@@ -31,6 +32,7 @@ const InputBoxes = ({ size = 1 }: InputBoxesProps) => {
         <InputBox
           key={itemKey}
           name={itemKey}
+          isActive={isActive}
           onChange={handleCurrentInputBox}
         />
       );

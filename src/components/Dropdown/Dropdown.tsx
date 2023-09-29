@@ -23,7 +23,7 @@ const Dropdrown = ({ value, options, onChange }: DropdownProps) => {
     setShowOptions(false);
     onChange(id);
   };
-  console.log(value, typeof value)
+
   return (
     <div className={`dropdown ${showOptions ? "dropdown--open" : ""} `}>
       <input
