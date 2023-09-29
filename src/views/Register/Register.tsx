@@ -11,6 +11,8 @@ import Dropdrown from "../../components/Dropdown/Dropdown";
 
 import Header from "../../layouts/Header/Header";
 
+import dniValidationService from "../../services/dniValidationService";
+
 import { RegisterStepsType, DniFilesType, UploadFileType } from "../../utils/types";
 import { InitialDniFiles } from "../../utils/initials";
 import { banks } from "../../utils/constants";
@@ -27,7 +29,11 @@ const Register = () => {
   const [hasBankAccount, setHasBankAccount] = useState<boolean>(false);
   console.log("hasBankAccount:", hasBankAccount);
   // Funciones del primer paso de Registro
-  const handleSubmitForm = (data: any) => {
+  const handleSubmitForm = async (userData: any) => {
+    const { dni: userDni } = userData;
+
+    const response = await dniValidationService(userDni, 0);
+    console.log("response:", response);
     setStep("upload");
   };
 

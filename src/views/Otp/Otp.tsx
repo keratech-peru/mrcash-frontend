@@ -8,6 +8,7 @@ import TextLink from "../../components/TextLink/TextLink";
 import Header from "../../layouts/Header/Header";
 
 import otpValidationService from "../../services/otpValidationService";
+import resendOtpValidationService from "../../services/resendOtpValidationService";
 
 import "./Otp.css";
 
@@ -24,7 +25,9 @@ const Otp = () => {
     setTimerIsDone(isDone);
   };
 
-  const handleResendCode = () => {
+  const handleResendCode = async () => {
+    const response = await resendOtpValidationService(userId);
+    console.log("handleResendCode!", response);
     setKey((key: number) => key + 1);
     setTimerIsDone(false);
   };

@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const dniValidationService = (dni: string) => {
+const dniValidationService = (dni: string, isLogin: number) => {
   const apiKey = "keyprueba_users";
-  const apiUrl = `https://rrwzy5sh22fpv463lkxxrrmkku0orluc.lambda-url.us-east-1.on.aws/users/appuser/${dni}/1`;
+  const apiUrl = `https://rrwzy5sh22fpv463lkxxrrmkku0orluc.lambda-url.us-east-1.on.aws/users/appuser/${dni}/${isLogin}`;
 
   const requestOptions = {
     headers: {

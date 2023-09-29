@@ -1,20 +1,19 @@
 import axios from 'axios';
 
-const otpValidationService = (userData: any) => {
+const resendOtpValidationService = (userId: number) => {
   const apiKey = "keyprueba_users";
-  const apiUrl = `https://rrwzy5sh22fpv463lkxxrrmkku0orluc.lambda-url.us-east-1.on.aws/users/otp/validate`;
+  const apiUrl = `https://rrwzy5sh22fpv463lkxxrrmkku0orluc.lambda-url.us-east-1.on.aws/users/otp/resend/${userId}`;
 
   const requestOptions = {
     headers: {
-      "Api-Lambda-Key": apiKey,
-      "Access-Control-Allow-Origin": "*"
+      "Api-Lambda-Key": apiKey
     }
   };
 
   // Función para realizar la solicitud API
   const fetchData = async () => {
     try {
-      const response = await axios.post<any>(apiUrl, userData, requestOptions);
+      const response = await axios.put<any>(apiUrl, requestOptions);
 
       return response;
     } catch (error: any) {
@@ -25,9 +24,9 @@ const otpValidationService = (userData: any) => {
     };
   };
 
-  const otpResponse = fetchData();
+  const resendOtpResponse = fetchData();
 
-  return otpResponse;
+  return resendOtpResponse;
 };
 
-export default otpValidationService;
+export default resendOtpValidationService;
