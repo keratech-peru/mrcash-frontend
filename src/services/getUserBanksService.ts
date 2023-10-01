@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const getUserBanksService = () => {
   const apiKey = "keyprueba_users";
-  const apiUrl = `https://rrwzy5sh22fpv463lkxxrrmkku0orluc.lambda-url.us-east-1.on.aws/users/banks`;
+  const apiUrl = `https://d2evztu0c6k1t9.cloudfront.net/users/banks`;
 
   const requestOptions = {
     headers: {
