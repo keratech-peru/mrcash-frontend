@@ -8,6 +8,7 @@ import Form from "../../components/Form/Form";
 import UploadFile from "../../components/UploadFile/UploadFile";
 import Button from "../../components/Button/Button";
 import Dropdrown from "../../components/Dropdown/Dropdown";
+import Modal from "../../components/Modal/Modal";
 
 import Header from "../../layouts/Header/Header";
 
@@ -22,6 +23,8 @@ const Register = () => {
   const navigate = useNavigate();
 
   const [step, setStep] = useState<RegisterStepsType>("register");
+  const [modalMessage, setModalMessage] = useState<string>("");
+  const [showModal, setShowModal] = useState<boolean>(false);
   const [dniFiles, setDniFiles] = useState<DniFilesType>(InitialDniFiles);
   const [hasDniFiles, setHasDniFiles] = useState<boolean>(false);
   const [bankName, setBankName] = useState<string>("");
@@ -34,7 +37,16 @@ const Register = () => {
 
     const response = await dniValidationService(userDni, 0);
     console.log("response:", response);
-    setStep("upload");
+    const { data, status } = response;
+
+    if (status === 200) {
+      setStep("upload");
+    };
+
+    if (status === 400) {
+      setModalMessage(data?.detail?.message);
+      setShowModal(true);
+    };
   };
 
   // Funciones del segundo paso de Registro
@@ -78,6 +90,11 @@ const Register = () => {
     };
   };
 
+  // Función que controla cuando se cierra el modal mediante el botón que contiene
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
   useEffect(() => {
     if (!dniFiles) return;
 
@@ -91,6 +108,14 @@ const Register = () => {
       <Header canReturn />
       <main className="register">
         <div className="container_register">
+          {
+            showModal && (
+              <Modal
+                text={modalMessage}
+                handleCloseModal={handleCloseModal}
+              />
+            )
+          }
           {
             step === "register" ? (
               <>

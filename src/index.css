@@ -10,6 +10,7 @@
   --principal-color: #00ACAC;
   --secondary-color: #00648B;
   --hover-color: #BCE1DE;
+  --modal-bg: rgba(79, 97, 104, 0.75);
 
   /* Custom Fonts */
   --title-font: normal 700 64px/100% "Archivo", sans-serif;
@@ -17,6 +18,7 @@
   --description-font: normal 400 24px/160% "Archivo", sans-serif;
   --button-font: normal 700 16px/normal "Archivo", sans-serif;
   --link-font: normal 400 16px/160% "Archivo", sans-serif;
+  --modal-font: normal 400 24px/32px "Archivo", sans-serif;
   --body-font: normal 400 14px/18px "Archivo", sans-serif;
   --error-font: normal 400 12px/160% "Archivo", sans-serif;
 }
