@@ -12,6 +12,7 @@ import Header from "../../layouts/Header/Header";
 
 import dniValidationService from "../../services/dniValidationService";
 import getUserBanksService from "../../services/getUserBanksService";
+import createUserService from "../../services/createUserService";
 
 import bankAccountFormat from "../../utils/bankAccountFormat";
 import { RegisterStepsType, DniFilesType, UploadFileType } from "../../utils/types";
@@ -26,6 +27,7 @@ const Register = () => {
   const [step, setStep] = useState<RegisterStepsType>("register");
   const [modalMessage, setModalMessage] = useState<string>("");
   const [showModal, setShowModal] = useState<boolean>(false);
+  const [formData, setFormData] = useState<any>({});
   const [dniFiles, setDniFiles] = useState<DniFilesType>(InitialDniFiles);
   const [hasDniFiles, setHasDniFiles] = useState<boolean>(false);
   const [banks, setBanks] = useState<any>({});
@@ -34,12 +36,14 @@ const Register = () => {
   const [hasBankAccount, setHasBankAccount] = useState<boolean>(false);
 
   // Funciones del primer paso de Registro
-  const handleSubmitForm = async (userData: any) => {
-    const { dni: userDni } = userData;
+  const handleSubmitForm = async (formData: any) => {
+    const { dni: userDni } = formData;
 
     const response = await dniValidationService(userDni, 0);
 
     const { data, status } = response;
+
+    setFormData(formData);
 
     if (status === 200) {
       setStep("upload");
@@ -92,11 +96,35 @@ const Register = () => {
     setHasBankAccount(hasBankAccount);
   };
 
-  const handleSubmitBankAccount = (event: any) => {
+  const handleSubmitBankAccount = async (event: any) => {
     event.preventDefault();
 
-    if (bankAccount === "11111111111111") {
-      navigate("/otp");
+    const userData = {
+      appusers: {
+        name: formData?.name,
+        lastname: formData?.lastName,
+        email: formData?.email,
+        phone: formData?.phone,
+        doc_number: formData?.dni,
+        doc_url_1: "",
+        doc_url_2: "",
+      },
+      accounts: {
+        bank_id: currentBank?.id,
+        account_number: bankAccount?.split("-")?.join("")
+      }
+    };
+
+    const response = await createUserService(userData);
+    console.log("handleSubmitBankAccount:", response);
+    const { status, data } = response;
+
+    if (status === 201) {
+      navigate("/otp", { replace: true, state: data });
+    };
+    
+    if (status === 400) {
+      
     };
   };
 

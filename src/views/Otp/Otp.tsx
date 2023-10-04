@@ -27,7 +27,7 @@ const Otp = () => {
 
   const handleResendCode = async () => {
     const response = await resendOtpValidationService(userId);
-
+    console.log("handleResendCode!", response)
     setKey((key: number) => key + 1);
     setTimerIsDone(false);
   };
@@ -39,7 +39,7 @@ const Otp = () => {
     };
 
     const response = await otpValidationService(otpData);
-
+    console.log("handleFinalCode!", response);
     // navigate("/dashboard");
   };
 

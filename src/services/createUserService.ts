@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const createUserService = (formData: any) => {
+const createUserService = (userData: any) => {
   const apiKey = "keyprueba_users";
   const apiUrl = `https://d2evztu0c6k1t9.cloudfront.net/users/appuser-account/form`;
 
@@ -14,7 +14,7 @@ const createUserService = (formData: any) => {
   // Función para realizar la solicitud API
   const fetchData = async () => {
     try {
-      const response = await axios.post<any>(apiUrl, formData, requestOptions);
+      const response = await axios.post<any>(apiUrl, userData, requestOptions);
 
       return response;
     } catch (error: any) {
