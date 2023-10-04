@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   /* Custom Colors */
   --white: #FFF;
@@ -29,3 +33,19 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+  :root {
+    /* Custom Fonts */
+    --title-font: normal 700 36px/100% "Archivo", sans-serif;
+    --subsection-font: normal 700 14px/normal "Archivo", sans-serif;
+    --description-font: normal 400 20px/160% "Archivo", sans-serif;
+    --button-font: normal 700 12px/normal "Archivo", sans-serif;
+    --link-font: normal 400 12px/160% "Archivo", sans-serif;
+    --modal-font: normal 400 16px/32px "Archivo", sans-serif;
+    --body-font: normal 400 12px/18px "Archivo", sans-serif;
+    --error-font: normal 400 10px/160% "Archivo", sans-serif;
+  }
+}
+/* End of Responsive design */

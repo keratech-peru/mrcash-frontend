@@ -2,7 +2,18 @@
   text-align: center;
 }
 
-.wrapper {}
+.view {
+  padding: 60px 0;
+}
+
+.view_container {
+  width: 60%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
 
 .title {
   font: var(--title-font);
@@ -13,3 +24,24 @@
   font: var(--description-font);
   margin: 0 0 40px 0;
 }
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+  .view {
+    padding: 48px 0;
+  }
+  
+  .view_container {
+    width: 85%;
+    max-width: 100%;
+  }
+
+  .title {
+    margin: 0 0 20px 0;
+  }
+  
+  .description {
+    margin: 0 0 32px 0;
+  }
+}
+/* End of Responsive design */

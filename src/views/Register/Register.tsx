@@ -30,7 +30,7 @@ const Register = () => {
   const [bankName, setBankName] = useState<string>("");
   const [bankAccount, setBankAccount] = useState<string>("");
   const [hasBankAccount, setHasBankAccount] = useState<boolean>(false);
-  console.log("hasBankAccount:", hasBankAccount);
+
   // Funciones del primer paso de Registro
   const handleSubmitForm = async (userData: any) => {
     const { dni: userDni } = userData;
@@ -85,15 +85,24 @@ const Register = () => {
   const handleSubmitBankAccount = (event: any) => {
     event.preventDefault();
 
-    if (bankAccount === "12345678") {
+    if (bankAccount === "11111111111111") {
       navigate("/otp");
     };
   };
 
   // Función que controla cuando se cierra el modal mediante el botón que contiene
   const handleCloseModal = () => {
-    setShowModal(false);
+    setShowModal(!showModal);
   };
+
+  useEffect(() => {
+    if (showModal) {
+      window.scrollTo(0, 0);
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "visible";
+    };
+  }, [showModal]);
 
   useEffect(() => {
     if (!dniFiles) return;
@@ -106,8 +115,8 @@ const Register = () => {
   return (
     <>
       <Header canReturn />
-      <main className="register">
-        <div className="container_register">
+      <main className="view">
+        <div className="view_container">
           {
             showModal && (
               <Modal
@@ -166,12 +175,13 @@ const Register = () => {
                     name="bankAccount"
                     placeholder="Ej: 19139712973012"
                     value={bankAccount}
+                    isValid={isValid("bankAccount", bankAccount)}
                     onChange={handleBankAccount}
                   />
                 </div>
                 <Button
                   text={"Listo"}
-                  isActive={true}
+                  isActive={hasBankAccount}
                   onClick={handleSubmitBankAccount}
                 />
               </>

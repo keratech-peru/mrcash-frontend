@@ -36,3 +36,16 @@
 .inputfield__input:focus ~ .inputfield__error {
   display: none;
 }
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+  .inputfield__input {
+    padding: 12px 8px;
+    border-radius: 16px;
+  }
+
+  .inputfield__error {
+    bottom: -16px;
+  }
+}
+/* End of Responsive design */

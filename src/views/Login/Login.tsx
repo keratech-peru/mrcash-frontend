@@ -48,8 +48,8 @@ const Login = () => {
   return (
     <>
       <Header />
-      <main className="login">
-        <div className="container_login">
+      <main className="view">
+        <div className="view_container">
           <h1 className="title">¡Hola!</h1>
           <p className="description">Bienvenido a Mr. Cash</p>
           <InputField

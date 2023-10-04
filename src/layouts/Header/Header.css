@@ -25,3 +25,12 @@
   align-items: center;
   gap: 8px;
 }
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+  .header {
+    outline: 1px solid red;
+    height: 80px;
+  }
+}
+/* End of Responsive design */

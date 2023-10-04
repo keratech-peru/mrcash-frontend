@@ -46,8 +46,8 @@ const Otp = () => {
   return (
     <>
       <Header />
-      <main key={key} className="otp">
-        <div className="container_otp">
+      <main key={key} className="view">
+        <div className="view_container">
           <h1 className="title">Por favor revisa tu celular</h1>
           <p className="description">
             Hemos enviado un código de acceso  que tiene  4 dígitos al número {userPhone}

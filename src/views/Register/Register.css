@@ -1,16 +1,3 @@
-.register {
-  padding: 60px 0;
-}
-
-.container_register {
-  width: 60%;
-  max-width: 600px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto;
-}
-
 .register__uploadfiles {
   width: 100%;
   display: flex;

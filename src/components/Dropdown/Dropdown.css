@@ -47,3 +47,24 @@
 .dropdown__option:last-child {
   border: 0;
 }
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+  .dropdown--open .dropdown__input {
+    border-radius: 14px 14px 0 0;
+  }
+
+  .dropdown__input {
+    padding: 12px 8px;
+    border-radius: 14px;
+  }
+
+  .dropdown__options {
+    top: 42px;
+  }
+
+  .dropdown__option {
+    padding: 12px;
+  }
+}
+/* End of Responsive design */

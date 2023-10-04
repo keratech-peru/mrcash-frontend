@@ -48,3 +48,8 @@
 .uploadfile--success .uploadfile__description {
   color: var(--principal-color);
 }
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+}
+/* End of Responsive design */

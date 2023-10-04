@@ -17,3 +17,13 @@
   pointer-events: all;
   cursor: pointer;
 }
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+  .button {
+    padding: 12px;
+    margin: 24px 0 0 0;
+    border-radius: 14px;
+  }
+}
+/* End of Responsive design */

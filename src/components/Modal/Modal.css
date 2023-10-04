@@ -36,3 +36,11 @@
 .modal__text {
   font: var(--modal-font);
 }
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+  .modal {
+    padding: 24px;
+  }
+}
+/* End of Responsive design */

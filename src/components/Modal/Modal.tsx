@@ -1,5 +1,4 @@
 import Button from "../Button/Button";
-import CloseIcon from "../../assets/icons/CloseIcon";
 
 import "./Modal.css";
 
