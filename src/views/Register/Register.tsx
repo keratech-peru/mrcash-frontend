@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import "./Register.css";
-
 import InputField from "../../components/InputField/InputField";
 import Form from "../../components/Form/Form";
 import UploadFile from "../../components/UploadFile/UploadFile";
@@ -13,11 +11,14 @@ import Modal from "../../components/Modal/Modal";
 import Header from "../../layouts/Header/Header";
 
 import dniValidationService from "../../services/dniValidationService";
+import getUserBanksService from "../../services/getUserBanksService";
 
+import bankAccountFormat from "../../utils/bankAccountFormat";
 import { RegisterStepsType, DniFilesType, UploadFileType } from "../../utils/types";
 import { InitialDniFiles } from "../../utils/initials";
-import { banks } from "../../utils/constants";
 import isValid from "../../utils/validations";
+
+import "./Register.css";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -27,7 +28,8 @@ const Register = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [dniFiles, setDniFiles] = useState<DniFilesType>(InitialDniFiles);
   const [hasDniFiles, setHasDniFiles] = useState<boolean>(false);
-  const [bankName, setBankName] = useState<string>("");
+  const [banks, setBanks] = useState<any>({});
+  const [currentBank, setCurrentBank] = useState<any>({});
   const [bankAccount, setBankAccount] = useState<string>("");
   const [hasBankAccount, setHasBankAccount] = useState<boolean>(false);
 
@@ -36,7 +38,7 @@ const Register = () => {
     const { dni: userDni } = userData;
 
     const response = await dniValidationService(userDni, 0);
-    console.log("response:", response);
+
     const { data, status } = response;
 
     if (status === 200) {
@@ -58,17 +60,24 @@ const Register = () => {
     setDniFiles({...dniFiles, back: file});
   };
 
-  const handleSubmitUploadFiles = () => {
-    setStep("account");
+  const handleSubmitUploadFiles = async () => {
+    const response = await getUserBanksService();
+
+    const { status, data } = response;
+
+    if (status === 200) {
+      const { banks } = data;
+      
+      setBanks(banks);
+      setStep("account");
+    };
   };
 
   // Funciones del tercer paso de Registro
-  const handleBankName = (name: string) => {
-    if (!name) return;
-    
-    const bankName = banks?.find((bank: any) => bank?.value === name)?.label;
-    
-    setBankName(bankName ?? "");
+  const handleBankName = (bank: any) => {
+    if (!bank) return;
+
+    setCurrentBank(bank);
   };
 
   const handleBankAccount = (event: any) => {
@@ -76,9 +85,10 @@ const Register = () => {
 
     const { value } = event?.target;
     
-    const hasBankAccount = isValid("bankAccount", value);
+    const bankAccount = bankAccountFormat(value, currentBank?.format);
+    const hasBankAccount = isValid("bankAccount", bankAccount, currentBank?.number_digits);
 
-    setBankAccount(value);
+    setBankAccount(bankAccount);
     setHasBankAccount(hasBankAccount);
   };
 
@@ -111,6 +121,11 @@ const Register = () => {
 
     setHasDniFiles(hasDniFiles);
   }, [dniFiles]);
+
+  useEffect(() => {
+    setBankAccount("");
+    setHasBankAccount(false);
+  }, [currentBank]);
 
   return (
     <>
@@ -167,15 +182,16 @@ const Register = () => {
                 </p>
                 <div className="register__account">
                   <Dropdrown
-                    value={bankName}
                     options={banks}
                     onChange={handleBankName}
                   />
                   <InputField
                     name="bankAccount"
                     placeholder="Ej: 19139712973012"
+                    maxLength={currentBank?.format?.length}
                     value={bankAccount}
-                    isValid={isValid("bankAccount", bankAccount)}
+                    isValid={isValid("bankAccount", bankAccount, currentBank?.number_digits)}
+                    icon={<img height={16} src={currentBank?.url_image} />}
                     onChange={handleBankAccount}
                   />
                 </div>

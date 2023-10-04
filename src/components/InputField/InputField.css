@@ -10,6 +10,13 @@
   border-radius: 18px;
 }
 
+.inputfield__icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+}
+
 .inputfield__error {
   display: none;
   position: absolute;

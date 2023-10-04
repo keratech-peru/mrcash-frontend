@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-import "./InputField.css";
-
 import { errors } from "../../utils/texts";
 import { FormFieldsInterface } from "../../utils/types";
+
+import "./InputField.css";
 
 interface InputFieldProps {
   name: string;
@@ -12,7 +12,7 @@ interface InputFieldProps {
   maxLength?: number;
   value?: string;
   isValid?: boolean;
-  errMess?: string;
+  icon?: any;
   onChange: React.ChangeEventHandler<HTMLInputElement> | undefined;
 };
 
@@ -24,7 +24,7 @@ const InputField = (
     maxLength = 100,
     value = "",
     isValid,
-    errMess = "",
+    icon,
     onChange
   }: InputFieldProps) => {
     const [hasError, setHasError] = useState<boolean>(false);
@@ -52,6 +52,9 @@ const InputField = (
           value={value}
           onChange={onChange}
         />
+        <div className="inputfield__icon">
+          {icon}
+        </div>
         <span className="inputfield__error">{errorMessage}</span>
       </div>
     );

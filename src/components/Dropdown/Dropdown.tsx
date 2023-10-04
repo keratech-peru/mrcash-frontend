@@ -3,12 +3,12 @@ import { useState } from "react";
 import "./Dropdown.css";
 
 interface DropdownProps {
-  value: string;
   options: any;
   onChange: (name: string) => void;
 };
 
-const Dropdrown = ({ value, options, onChange }: DropdownProps) => {
+const Dropdrown = ({ options, onChange }: DropdownProps) => {
+  const [value, setValue] = useState<string>("¿A qué banco pertenece tu cuenta?");
   const [showOptions, setShowOptions] = useState<boolean>(false);
 
   const handleShowOptions = () => {
@@ -18,10 +18,14 @@ const Dropdrown = ({ value, options, onChange }: DropdownProps) => {
   const handleChangeBank = (event: any) => {
     event.preventDefault();
 
-    const { id } = event?.target;
+    const { innerText } = event?.target;
 
+    const currentBank = options?.find((option: any) => option?.name === innerText);
+
+    setValue(innerText);
     setShowOptions(false);
-    onChange(id);
+
+    onChange(currentBank);
   };
 
   return (
@@ -29,7 +33,7 @@ const Dropdrown = ({ value, options, onChange }: DropdownProps) => {
       <input
         className="dropdown__input"
         type="text"
-        value={value === "" ? "¿A qué banco pertenece tu cuenta?" : value}
+        value={value}
         readOnly
         onClick={handleShowOptions}
       />
@@ -37,14 +41,14 @@ const Dropdrown = ({ value, options, onChange }: DropdownProps) => {
         showOptions && (
           <ul className="dropdown__options">
           {
-            options.map((option: any) => (
+            options?.map((option: any) => (
               <li
-                id={option?.value}
-                key={option?.value}
+                key={option?.custom_name}
+                id={option?.custom_name}
                 className="dropdown__option"
                 onClick={handleChangeBank}
               >
-                {option?.label}
+                {option?.name}
               </li>
             ))
           }

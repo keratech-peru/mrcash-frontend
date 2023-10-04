@@ -24,6 +24,7 @@ export type FormFieldsInterface = {
   birthday: string;
   email: string;
   phone: string;
+  bankAccount?: string;
 };
 
 export type FormFieldsValidationsInterface = {
@@ -41,4 +42,10 @@ export type TimerClockType = {
   time: number;
   seconds: number;
   minuts: number;
+};
+
+export type IsValidType = {
+  name: string;
+  value: string;
+  size: number;
 };

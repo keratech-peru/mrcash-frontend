@@ -7,6 +7,7 @@ export const placeholders: FormFieldsInterface = {
   birthday: "Ingresa tu fecha de nacimiento",
   email: "Ingresa tu correo",
   phone: "Ingresa tu número de celular",
+  bankAccount: "Ej: 19139712973012"
 };
 
 export const errors: FormFieldsInterface = { 
@@ -16,4 +17,5 @@ export const errors: FormFieldsInterface = {
   birthday: "¡Ingrese correctamente su cumpleaños!",
   email: "¡Ingrese correctamente su correo!",
   phone: "¡Ingrese correctamente su teléfono!",
+  bankAccount: "!Ingrese correctamente su número bancario!"
 };

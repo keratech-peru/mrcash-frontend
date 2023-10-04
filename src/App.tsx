@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
 
-import "./App.css";
-
 import Login from "./views/Login/Login";
 import Register from "./views/Register/Register";
 import Otp from "./views/Otp/Otp";
 import Dashboard from "./views/Dashboard/Dashboard";
+
+import "./App.css";
 
 const App = () => {
   return (

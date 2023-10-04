@@ -1,3 +1,5 @@
+import { IsValidType } from "./types";
+
 const isNotEmpty = (str: string) => {
   return !!str.length;
 };
@@ -28,16 +30,17 @@ const isPhoneValid = (phone: string) => {
   return isNum && hasCorrectSize;
 };
 
-const isBankAccountValid = (account: string) => {
+const isBankAccountValid = (account: string, size?: number) => {
   if (!account) return false;
 
-  const isNum = /^\d+$/.test(account);
-  const hasCorrectSize = account?.length === 14;
+  const formattedAccount = account?.split("-")?.join("");
+  const isNum = /^\d+$/.test(formattedAccount);
+  const hasCorrectSize = formattedAccount?.length === size;
 
   return isNum && hasCorrectSize;
 };
 
-const isValid = (name: string, value: string) => {
+const isValid = (name: string, value: string, size?: number) => {
   if (name === "name") {
     return isNotEmpty(value);
   };
@@ -63,7 +66,7 @@ const isValid = (name: string, value: string) => {
   };
 
   if (name === "bankAccount") {
-    return isBankAccountValid(value);
+    return isBankAccountValid(value, size);
   };
 
   return false;

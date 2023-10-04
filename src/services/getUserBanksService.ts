@@ -18,9 +18,8 @@ const getUserBanksService = () => {
       return response;
     } catch (error: any) {
       console.error("Error al obtener datos de la API:", error);
-      const { response } = error;
       
-      return response;
+      throw error;
     };
   };
 

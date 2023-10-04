@@ -6,7 +6,7 @@ export const InitialFormFields: FormFieldsInterface = {
   dni: "",
   birthday: "",
   email: "",
-  phone: "",
+  phone: ""
 };
 
 export const InitialFormFieldsValidations: FormFieldsValidationsInterface = {
@@ -15,7 +15,7 @@ export const InitialFormFieldsValidations: FormFieldsValidationsInterface = {
   dni: false,
   birthday: false,
   email: false,
-  phone: false,
+  phone: false
 };
 
 export const InitialUploadFile: UploadFileType = {
