@@ -24,8 +24,12 @@ const Form = ({ onSubmitForm }: FormProps) => {
 
     const currentValidations = {...validations, [name]: isValid(name, value)};
     const isFormValid = Object.values(currentValidations).every(value => value === true);
+    const isNum = /^\d+$/.test(value);
 
-    setData({...data, [name]: value});
+    if ((name !== "dni" && name !== "phone") || isNum) {
+      setData({...data, [name]: value});
+    };
+
     setValidations(currentValidations);
     setIsFormValid(isFormValid);
   };

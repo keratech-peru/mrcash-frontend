@@ -33,7 +33,7 @@ const Register = () => {
   const [dniFiles, setDniFiles] = useState<DniFilesType>(InitialDniFiles);
   const [hasDniFiles, setHasDniFiles] = useState<boolean>(false);
   const [banks, setBanks] = useState<any>({});
-  const [currentBank, setCurrentBank] = useState<any>({});
+  const [currentBank, setCurrentBank] = useState<any>(null);
   const [bankAccount, setBankAccount] = useState<string>("");
   const [hasBankAccount, setHasBankAccount] = useState<boolean>(false);
 
@@ -220,9 +220,10 @@ const Register = () => {
                   />
                   <InputField
                     name="bankAccount"
-                    placeholder="Ej: 19139712973012"
+                    placeholder={`Ej: ${currentBank?.format}`}
                     maxLength={currentBank?.format?.length}
                     value={bankAccount}
+                    isDisabled={!currentBank}
                     isValid={isValid("bankAccount", bankAccount, currentBank?.number_digits)}
                     icon={<img height={16} src={currentBank?.url_image} />}
                     onChange={handleBankAccount}

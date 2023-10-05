@@ -34,6 +34,17 @@
   display: block;
 }
 
+.inputfield--disabled {
+  cursor: none;
+  pointer-events: none;
+}
+
+.inputfield--disabled
+.inputfield__input {
+  background-color: var(--gray4);
+  border-color: var(--gray5);
+}
+
 .inputfield__input:focus,
 .inputfield__input:focus-visible {
   outline: none;

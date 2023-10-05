@@ -9,7 +9,7 @@ const isDniValid = (dni: string) => {
 
   const isNum = /^\d+$/.test(dni);
   const hasCorrectSize = dni?.length === 8;
-  
+
   return isNum && hasCorrectSize;
 };
 
