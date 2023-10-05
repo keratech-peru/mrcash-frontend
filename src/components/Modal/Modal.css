@@ -11,6 +11,7 @@
 
 .modal {
   background-color: var(--white);
+  width: 800px;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -35,12 +36,23 @@
 
 .modal__text {
   font: var(--modal-font);
+  margin: 40px 0 0 0;
 }
 
 /* Responsive design */
+@media screen and (max-width: 1000px) {
+  .modal {
+    width: 85%;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .modal {
     padding: 24px;
+  }
+
+  .modal__text {
+    margin: 24px 0 0 0;
   }
 }
 /* End of Responsive design */

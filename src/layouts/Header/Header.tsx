@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
-import "./Header.css";
+import Logo from "../../assets/images/logo.png";
+import { ReactComponent as BackButton} from "../../assets/icons/back-button-icon.svg";
 
-import Logo from "../../assets/icons/Logo";
-import BackButton from "../../assets/icons/BackButton";
+import "./Header.css";
 
 interface HeaderProps {
   canReturn?: boolean;
@@ -23,7 +23,7 @@ const Header = ({ canReturn = false }: HeaderProps) => {
             )
           }
         </div>
-        <Logo />
+        <img className="header__logo" src={Logo} alt="Mr. Cash Logo" />
       </div>
     </header>
   );

@@ -6,23 +6,26 @@ import "./Timer.css";
 
 interface TimerProps {
   time: number;
+  status: any;
   handleTimer: any;
 };
 
-const Timer = ({ time, handleTimer }: TimerProps) => {
-  const [status, setStatus] = useState<TimerStatusType>("active");
-  
+const Timer = ({ time, status, handleTimer }: TimerProps) => {
   const [clock, setClock] = useState<TimerClockType>({
     time,
-    seconds: time - Math.floor((time - 1) / 60) * 60 -1,
+    seconds: time - Math.floor((time - 1) / 60) * 60 - 1,
     minuts: Math.floor((time - 1) / 60)
   });
 
+  const [message, setMessage] = useState<string>("");
+
   const className = `timer timer--${status}`;
-  
-  const textContent = {
+
+  const textContent: any = {
     active: `${clock?.minuts}:${clock?.seconds <= 10 ? `0${clock?.seconds}` : clock?.seconds} segundos`,
-    inactive: "¡Se terminó el tiempo de espera!"
+    done: "¡Se terminó el tiempo de espera!",
+    error: "¡El código de verificación es incorrecto!",
+    success: "¡Código correcto!"
   };
 
   useEffect(() => {
@@ -41,8 +44,10 @@ const Timer = ({ time, handleTimer }: TimerProps) => {
 
   useEffect(() => {
     if (clock?.time === 0) {
-      setStatus("inactive");
+      setMessage(textContent["done"]);
       handleTimer(true);
+    } else {
+      setMessage(textContent[status]);
     };
   }, [clock?.time, handleTimer]);
 
@@ -50,7 +55,7 @@ const Timer = ({ time, handleTimer }: TimerProps) => {
     <p
       className={className}
     >
-      {textContent[status]}
+      {message}
     </p>
   );
 };

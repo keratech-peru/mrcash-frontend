@@ -36,7 +36,7 @@ export type FormFieldsValidationsInterface = {
   phone: boolean;
 };
 
-export type TimerStatusType = "active" | "inactive";
+export type TimerStatusType = "active" | "done" | "error" | "success";
 
 export type TimerClockType = {
   time: number;

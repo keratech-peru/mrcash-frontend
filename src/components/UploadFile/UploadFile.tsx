@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import "./UploadFile.css";
 
-import UploadFileIcon from "../../assets/icons/UploadFileIcon";
+import { ReactComponent as UploadFileIcon } from "../../assets/icons/upload-file-icon.svg";
 
 import { UploadFileType, UploadFileStatusType } from "../../utils/types";
 
@@ -59,7 +59,7 @@ const UploadFile = ({ title, handleFile }: UploadFileProps) => {
     <div className={className}>
       <h3 className="uploadfile__title">{title}</h3>
       <div className="uploadfile__input">
-        <UploadFileIcon width={95} height={95} />
+        <UploadFileIcon />
         <input
           className="uploadfile__input"
           type="file"

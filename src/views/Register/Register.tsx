@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { ReactComponent as PersonViewIcon } from "../../assets/icons/person-view-icon.svg";
+
 import InputField from "../../components/InputField/InputField";
 import Form from "../../components/Form/Form";
 import UploadFile from "../../components/UploadFile/UploadFile";
@@ -116,7 +118,7 @@ const Register = () => {
     };
 
     const response = await createUserService(userData);
-    console.log("handleSubmitBankAccount:", response);
+
     const { status, data } = response;
 
     if (status === 201) {
@@ -171,6 +173,7 @@ const Register = () => {
           {
             step === "register" ? (
               <>
+                <PersonViewIcon />
                 <p
                   className="description"
                 >
@@ -180,6 +183,7 @@ const Register = () => {
               </>
             ) : step === "upload" ? (
               <>
+                <PersonViewIcon />
                 <p
                   className="description"
                 >
@@ -203,6 +207,7 @@ const Register = () => {
               </>
             ) : step === "account" ? (
               <>
+                <PersonViewIcon />
                 <p
                   className="description"
                 >

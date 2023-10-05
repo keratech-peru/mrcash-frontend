@@ -22,7 +22,7 @@
 
 .description {
   font: var(--description-font);
-  margin: 0 0 40px 0;
+  margin: 40px 0;
 }
 
 /* Responsive design */
@@ -41,7 +41,7 @@
   }
   
   .description {
-    margin: 0 0 32px 0;
+    margin: 32px 0;
   }
 }
 /* End of Responsive design */

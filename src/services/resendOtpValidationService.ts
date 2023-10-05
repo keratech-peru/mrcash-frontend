@@ -13,7 +13,7 @@ const resendOtpValidationService = (userId: number) => {
   // Función para realizar la solicitud API
   const fetchData = async () => {
     try {
-      const response = await axios.put<any>(apiUrl, requestOptions);
+      const response = await axios.put<any>(apiUrl, {}, requestOptions);
 
       return response;
     } catch (error: any) {

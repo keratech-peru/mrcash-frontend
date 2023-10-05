@@ -1,5 +1,7 @@
 import Button from "../Button/Button";
 
+import { ReactComponent as PersonModalIcon } from "../../assets/icons/person-modal-icon.svg";
+
 import "./Modal.css";
 
 interface IModalProps {
@@ -12,6 +14,7 @@ const Modal = ({ text, handleCloseModal }: IModalProps) => {
     <div className="wrapper_modal">
       <div className="modal">
         <div className="modal_container">
+            <PersonModalIcon />
             <p className="modal__text">{text}</p>
             <Button
               text="Volver"

@@ -17,6 +17,7 @@
 
 .inputbox--inactive {
   background-color: var(--gray3);
+  color: var(--gray1);
   border: 1px solid var(--gray1);
   cursor: none;
   pointer-events: none;

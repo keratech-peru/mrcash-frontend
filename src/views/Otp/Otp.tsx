@@ -16,20 +16,23 @@ const Otp = () => {
   const navigate = useNavigate();
 
   const [key, setKey] = useState<number>(0);
-  const [timerIsDone, setTimerIsDone] = useState<boolean>(false);
+  const [timerStatus, setTimerStatus] = useState<string>("active");
+  const [isActiveInputBoxes, setIsActiveInputBoxes] = useState<boolean>(true);
 
   const { state } = useLocation();
   const { appuser_id: userId, phone: userPhone } = state;
 
   const handleTimer = (isDone: boolean) => {
-    setTimerIsDone(isDone);
+    setTimerStatus("done");
+    setIsActiveInputBoxes(!isDone);
   };
 
   const handleResendCode = async () => {
-    const response = await resendOtpValidationService(userId);
-    console.log("handleResendCode!", response)
+    resendOtpValidationService(userId);
+
     setKey((key: number) => key + 1);
-    setTimerIsDone(false);
+    setTimerStatus("active");
+    setIsActiveInputBoxes(true);
   };
 
   const handleFinalCode = async (code: string) => {
@@ -39,8 +42,18 @@ const Otp = () => {
     };
 
     const response = await otpValidationService(otpData);
-    console.log("handleFinalCode!", response);
-    // navigate("/dashboard");
+
+    const { status } = response;
+
+    if (status === 200) {
+      setTimerStatus("success");
+      navigate("/dashboard");
+    };
+    
+    if (status === 400) {
+      setTimerStatus("error");
+      setIsActiveInputBoxes(false);
+    };
   };
 
   return (
@@ -54,11 +67,12 @@ const Otp = () => {
           </p>
           <InputBoxes
             size={4}
-            isActive={!timerIsDone}
+            isActive={isActiveInputBoxes}
             handleCode={handleFinalCode}
           />
           <Timer
-            time={10}
+            time={30}
+            status={timerStatus}
             handleTimer={handleTimer}
           />
           <TextLink

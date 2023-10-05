@@ -6,6 +6,14 @@
   color: var(--principal-color);
 }
 
-.timer--inactive {
+.timer--done {
   color: var(--red);
+}
+
+.timer--error {
+  color: var(--red);
+}
+
+.timer--success {
+  color: var(--principal-color);
 }
