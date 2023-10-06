@@ -33,7 +33,8 @@
     height: 80px;
   }
 
-  .header__logo {
+  .header__logo,
+  .header__logo img {
     width: 100px;
   }
 }
