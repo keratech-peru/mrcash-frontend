@@ -25,6 +25,11 @@
   margin: 40px 0;
 }
 
+.description span {
+  font-size: 24px;
+  font-weight: 600;
+}
+
 /* Responsive design */
 @media screen and (max-width: 768px) {
   .view {

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { ReactComponent as PersonViewIcon } from "../../assets/icons/person-view-icon.svg";
+import { ReactComponent as PersonSuccessIcon } from "../../assets/icons/person-success-icon.svg";
 
 import InputField from "../../components/InputField/InputField";
 import Form from "../../components/Form/Form";
@@ -122,13 +123,14 @@ const Register = () => {
     const { status, data } = response;
 
     if (status === 201) {
-      navigate("/otp", { replace: true, state: data });
+      navigate("/success");
+      // navigate("/otp", { replace: true, state: data });
     };
     
-    if (status === 400) {
-      
-    };
+    if (status === 400) {};
   };
+
+  // Función de la pantalla de éxito
 
   // Función que controla cuando se cierra el modal mediante el botón que contiene
   const handleCloseModal = () => {
@@ -220,12 +222,12 @@ const Register = () => {
                   />
                   <InputField
                     name="bankAccount"
-                    placeholder={`Ej: ${currentBank?.format}`}
+                    placeholder={`Ej: ${currentBank?.format ?? "123-1231445-1231"}`}
                     maxLength={currentBank?.format?.length}
                     value={bankAccount}
                     isDisabled={!currentBank}
                     isValid={isValid("bankAccount", bankAccount, currentBank?.number_digits)}
-                    icon={<img height={16} src={currentBank?.url_image} />}
+                    icon={currentBank && <img height={16} src={currentBank?.url_image} alt={`${currentBank?.custom_name} Logo Bank`} />}
                     onChange={handleBankAccount}
                   />
                 </div>
