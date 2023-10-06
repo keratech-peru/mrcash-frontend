@@ -43,7 +43,7 @@ const InputField = ({
   }, []);
 
   return (
-    <div className={inputFieldClassName}>
+    <div id={`inputfield--${name}`} className={inputFieldClassName}>
       <input
         className="inputfield__input"
         type={type}

@@ -18,7 +18,6 @@ const Login = () => {
 
   const [loginValue, setLoginValue] = useState<string>("");
   const [isLoginValid, setIsLoginValid] = useState<boolean>(false);
-  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const handleLoginInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -32,15 +31,18 @@ const Login = () => {
   const handleSubmitLogin = async () => {
     const response = await dniValidationService(loginValue, 1);
 
+    if (!response) {
+      navigate("/");
+    };
+
     const { status, data } = response;
 
     if (status === 200) {
-      navigate("/otp", { replace: true, state: data });
+      navigate("/otp", { replace: true, state: { data, isLogin: true } });
     };
 
     if (status === 400) {
       setIsLoginValid(false);
-      setErrorMessage(data?.detail?.message);
     };
   };
 

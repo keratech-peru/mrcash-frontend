@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { ReactComponent as PersonViewIcon } from "../../assets/icons/person-view-icon.svg";
-import { ReactComponent as PersonSuccessIcon } from "../../assets/icons/person-success-icon.svg";
 
 import InputField from "../../components/InputField/InputField";
 import Form from "../../components/Form/Form";
@@ -123,18 +122,27 @@ const Register = () => {
     const { status, data } = response;
 
     if (status === 201) {
-      navigate("/success");
-      // navigate("/otp", { replace: true, state: data });
+      navigate("/otp", { replace: true, state: { data, isLogin: false }});
     };
-    
-    if (status === 400) {};
   };
-
-  // Función de la pantalla de éxito
 
   // Función que controla cuando se cierra el modal mediante el botón que contiene
   const handleCloseModal = () => {
     setShowModal(!showModal);
+  };
+
+  const handleClickBackButton = () => {
+    if (step === "register") {
+      navigate("/");
+    };
+    
+    if (step === "upload") {
+      setStep("register");
+    };
+    
+    if (step === "account") {
+      setStep("upload");
+    };
   };
 
   useEffect(() => {
@@ -161,7 +169,7 @@ const Register = () => {
 
   return (
     <>
-      <Header canReturn />
+      <Header canReturn handleClickBackButton={handleClickBackButton} />
       <main className="view">
         <div className="view_container">
           {

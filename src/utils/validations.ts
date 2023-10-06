@@ -1,5 +1,3 @@
-import { IsValidType } from "./types";
-
 const isNotEmpty = (str: string) => {
   return !!str.length;
 };
@@ -54,7 +52,7 @@ const isValid = (name: string, value: string, size?: number) => {
   };
 
   if (name === "birthday") {
-    return isNotEmpty(value);
+    return true;
   };
 
   if (name === "email") {

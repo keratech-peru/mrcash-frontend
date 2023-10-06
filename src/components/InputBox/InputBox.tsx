@@ -34,6 +34,7 @@ const InputBox = ({ name, isActive = true, onChange }: InputBoxProps) => {
       name={name}
       maxLength={1}
       value={value}
+      autoComplete="off"
       onChange={handleInputBox}
     />
   )

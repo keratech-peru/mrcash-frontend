@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { TimerStatusType, TimerClockType } from "../../utils/types";
+import { TimerClockType } from "../../utils/types";
 
 import "./Timer.css";
 

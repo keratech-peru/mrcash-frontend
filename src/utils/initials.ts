@@ -13,7 +13,7 @@ export const InitialFormFieldsValidations: FormFieldsValidationsInterface = {
   name: false,
   lastName: false,
   dni: false,
-  birthday: false,
+  birthday: true,
   email: false,
   phone: false
 };

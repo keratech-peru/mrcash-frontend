@@ -20,7 +20,9 @@ const Otp = () => {
   const [isActiveInputBoxes, setIsActiveInputBoxes] = useState<boolean>(true);
 
   const { state } = useLocation();
-  const { appuser_id: userId, phone: userPhone } = state;
+
+  const { data, isLogin } = state;
+  const { appuser_id: userId, phone: userPhone } = data;
 
   const handleTimer = (isDone: boolean) => {
     setTimerStatus("done");
@@ -47,7 +49,12 @@ const Otp = () => {
 
     if (status === 200) {
       setTimerStatus("success");
-      navigate("/dashboard");
+
+      if (isLogin) {
+        navigate("/dashboard");
+      } else {
+        navigate("/success");
+      };
     };
     
     if (status === 400) {

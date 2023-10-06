@@ -13,21 +13,18 @@
 }
 
 .header__link {
-  display: grid;
-  place-items: center;
-}
-
-.header__link a {
   color: var(--black);
   font: var(--button-font);
   text-decoration: none;
   display: flex;
   align-items: center;
   gap: 8px;
+  cursor: pointer;
 }
 
 .header__logo {
   width: 150px;
+  margin: 0 0 0 auto;
 }
 
 /* Responsive design */

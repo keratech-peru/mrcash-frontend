@@ -25,6 +25,7 @@ const InputBoxes = ({ size = 1, isActive = true, handleCode }: InputBoxesProps) 
       setCode(code + value);
       nextInputBox.focus();
     } else {
+      inputBoxes[currentId].blur();
       handleCode(currentCode);
     };
   };
